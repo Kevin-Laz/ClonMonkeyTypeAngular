@@ -1,1 +1,13 @@
-<p>cuerpo works!</p>
+<section>
+  <time>{{TIEMPO_BASE}}</time>
+
+  <p class="contentW">
+    <label class="labelW" *ngFor="let word of palabras">
+      <span *ngFor="let wd of word.split(''); let ultima = last">{{wd}}<ng-container *ngIf="ultima">&nbsp;</ng-container></span>
+    </label>
+  </p>
+
+
+  <input autofocus>
+</section>
+

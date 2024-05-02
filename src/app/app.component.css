@@ -1,0 +1,18 @@
+.base{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vw;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.main{
+  flex-grow: 1 1 0%;
+}
+.header{
+  height: 100px;
+  width: 100%;
+  border-width: 3px;
+  border-color: #fff;
+  border-style: solid;
+}

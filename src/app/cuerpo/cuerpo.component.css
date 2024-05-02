@@ -1,0 +1,32 @@
+:host
+{
+  font-family:monospace;
+  display: grid;
+  padding: 32px;
+  justify-content: center;
+  font-size: 30px;
+  color:white;
+}
+input {
+  background-color: transparent;
+  border-color: white;
+  border-width: 1.5px;
+  border-radius: 3px;
+  background: #4e4e4e;
+}
+input:focus {
+  outline: none; /* Elimina el contorno predeterminado al recibir foco */
+  border-color: white;
+  border-width: 1.5px;
+  border-radius: 3px;
+}
+time{
+  color: #d4e610;
+}
+.contentW{
+  width: 80vw;
+}
+.labelW{
+  display: inline-block; /* Permite que el label se ajuste a su contenido */
+}
+
