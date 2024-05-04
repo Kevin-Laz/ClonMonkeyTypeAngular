@@ -29,4 +29,9 @@ time{
 .labelW{
   display: inline-block; /* Permite que el label se ajuste a su contenido */
 }
-
+.active{
+  font-weight: bold;
+}
+.correcto{
+  color:#52c69b
+}

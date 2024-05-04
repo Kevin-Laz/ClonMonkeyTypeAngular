@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 @Component({
     selector: 'app-cuerpo',
     standalone: true,
     templateUrl: './cuerpo.component.html',
     styleUrl: './cuerpo.component.css',
-    imports: [CommonModule]
+    imports: [CommonModule,FormsModule]
 })
 export class CuerpoComponent implements OnInit{
   ngOnInit(): void {
@@ -17,10 +18,23 @@ export class CuerpoComponent implements OnInit{
   palabras:Array<String> = [];
   texto:String = '';
   tiempoActual = this.TIEMPO_BASE;
+
+  //Atributos→Clases
+  active:boolean = false;
+  entrada:string = '';
+  correcto:boolean = false;
+  correctoArray: boolean[][] = [];
+
   Inicio(){
     this.tiempoActual = this.TIEMPO_BASE;
     this.palabras = this.TEXTO_BASE.split(' ');
-    //this.palabras.map(p=>this.texto = this.texto.concat('<span>'+ p +" "+ '</span>'))
-    //console.log(this.texto)
+    this.correctoArray = this.palabras.map(word => Array.from({ length: word.length }, () => false));
   }
+  onKeyDown(event: KeyboardEvent) {
+    if(event.key == this.palabras[0][0].toString()){
+      this.correctoArray[0][0] = true;
+    }
+    console.log(this.correctoArray[0][0])
+  }
+
 }
