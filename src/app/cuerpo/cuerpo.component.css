@@ -25,6 +25,7 @@ time{
 }
 .contentW{
   width: 80vw;
+  color:#6c6a6a;
 }
 .labelW{
   display: inline-block; /* Permite que el label se ajuste a su contenido */
@@ -33,5 +34,8 @@ time{
   font-weight: bold;
 }
 .correcto{
-  color:#52c69b
+  color:white;
+}
+.incorrecto{
+  color:red;
 }

@@ -20,21 +20,66 @@ export class CuerpoComponent implements OnInit{
   tiempoActual = this.TIEMPO_BASE;
 
   //Atributos→Clases
+  activeArray:boolean[] = [];
   active:boolean = false;
   entrada:string = '';
   correcto:boolean = false;
   correctoArray: boolean[][] = [];
-
+  incorrectoArray: boolean[][] = [];
+  sizeW:Number = 0;
+  numero:Number = 0
   Inicio(){
     this.tiempoActual = this.TIEMPO_BASE;
     this.palabras = this.TEXTO_BASE.split(' ');
+    this.activeArray = this.palabras.map(() => false);
     this.correctoArray = this.palabras.map(word => Array.from({ length: word.length }, () => false));
+    this.incorrectoArray = this.palabras.map(word => Array.from({ length: word.length }, () => false));
   }
-  onKeyDown(event: KeyboardEvent) {
-    if(event.key == this.palabras[0][0].toString()){
-      this.correctoArray[0][0] = true;
-    }
-    console.log(this.correctoArray[0][0])
+  onKeyPress(event: KeyboardEvent) {
+
+  }
+  onKeyUp(event:KeyboardEvent){
+    
   }
 
+  onKeyDown(event: KeyboardEvent) {
+    this.sizeW = this.palabras[0].length;
+    // Esperar un breve momento para permitir que el input se actualice con la nueva letra
+    setTimeout(() => {
+      // Obtener la palabra actual en el input
+      const entradaSplit = this.entrada.trim().split('');
+      // Iterar sobre cada letra de la palabra actual
+      if(entradaSplit.length==0){
+        this.correctoArray[0][0] = false;
+        this.incorrectoArray[0][0] = false;
+      }
+      entradaSplit.forEach((val, index) => {
+        if (val.length > 0) {
+          //console.log("Tecla:", event.key);
+          //console.log("Valor:", this.palabras[0][index]);
+          if(event.key=='Backspace'){
+            this.correctoArray[0][index+1] = false;
+            this.incorrectoArray[0][index+1] = false;
+
+            if (val == this.palabras[0][index]) {
+              this.correctoArray[0][index] = true;
+              this.incorrectoArray[0][index]=false;
+            }
+            else{
+              this.incorrectoArray[0][index] = true;
+              this.correctoArray[0][index] = false;
+            }
+          }
+          else if (val == this.palabras[0][index].toString()) {
+            this.correctoArray[0][index] = true;
+            this.incorrectoArray[0][index]=false;
+          }
+          else{
+            this.incorrectoArray[0][index] = true;
+            this.correctoArray[0][index] = false;
+          }
+        }
+      });
+    }, 1);
+  }
 }

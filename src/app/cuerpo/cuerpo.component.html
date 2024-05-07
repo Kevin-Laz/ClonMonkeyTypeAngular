@@ -2,12 +2,12 @@
   <time>{{TIEMPO_BASE}}</time>
 
   <p class="contentW">
-    <label [ngClass]="{active: i==0}" class="labelW" *ngFor="let word of palabras; let i = index">
-      <span [ngClass]="{correcto: correctoArray[i][j]}" *ngFor="let wd of word.split(''); let ultima = last; let j = index">{{wd}}<ng-container *ngIf="ultima">&nbsp;</ng-container></span>
+    <label [ngClass]="{active: activeArray[i]}" class="labelW" *ngFor="let word of palabras; let i = index">
+      <span [ngClass]="{correcto: correctoArray[i][j], incorrecto:incorrectoArray[i][j]}" *ngFor="let wd of word.split(''); let ultima = last; let j = index">{{wd}}<ng-container *ngIf="ultima">&nbsp;</ng-container></span>
     </label>
   </p>
 
 
-  <input  type="text" [(ngModel)] = "entrada" (keydown)="onKeyDown($event)" />
+  <input [autofocus]="true" type="text" [maxLength]="sizeW" [(ngModel)] = "entrada" (keydown)="onKeyDown($event)" (keyup)="onKeyUp($event)" />
 </section>
 
